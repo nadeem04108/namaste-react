@@ -1,0 +1,39 @@
+{
+  "name": "namaste_react",
+  "version": "1.0.0",
+  "description": "This is namaste react by Nadeem Ahmad",
+  "keywords": [
+    "react",
+    "namaste",
+    "react",
+    "nadeem",
+    "ahmad"
+  ],
+  "homepage": "https://github.com/nadeem04108/namaste-react#readme",
+  "bugs": {
+    "url": "https://github.com/nadeem04108/namaste-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nadeem04108/namaste-react.git"
+  },
+  "license": "ISC",
+  "author": "Nadeem Ahmad",
+  "type": "commonjs",
+  "scripts": {
+    "start":"parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+    
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "browserslist":[
+    "last 2 versions"
+  ]
+}

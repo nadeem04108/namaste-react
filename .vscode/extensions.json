@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "esbenp.prettier-vscode",
+        "dzhavat.bracket-pair-toggler",
+        "dbaeumer.vscode-eslint",
+        "aaron-bond.better-comments"
+    ]
+}
