@@ -21,19 +21,19 @@
   "author": "Nadeem Ahmad",
   "type": "commonjs",
   "scripts": {
-    "start":"parcel index.html",
+    "start": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest"
-    
   },
   "devDependencies": {
     "parcel": "^2.16.4"
   },
   "dependencies": {
     "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^6.30.6"
   },
-  "browserslist":[
+  "browserslist": [
     "last 2 versions"
   ]
 }

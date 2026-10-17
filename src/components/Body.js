@@ -5,8 +5,8 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   //Local State Variable -Super powerfull variable for that we use react Hooks(useState)
-  const [listOfRestaurants, SetListOfRestaurant] = useState(resList);
-  const [filteredRestaurant ,setfilteredRestaurant] = useState([])
+  const [listOfRestaurants, SetListOfRestaurant] = useState([]);
+  const [filteredRestaurant, setfilteredRestaurant] = useState([]);
   const [searchText, SetsearchText] = useState([]);
   // console.log("body renedered");
 
@@ -15,89 +15,17 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    try {
-      const response = await fetch(
-        " https://namastedev.com/api/v1/listRestaurants",
-      );
-      const json = await response.json();
-
-      // console.log("Full JSON response check:", json);
-
-      let restaurantsArray = null;
-
-      // FIX: Drill into json.data.data instead of just json.data
-      if (json?.data?.data?.cards) {
-        const cards = json.data.data.cards;
-
-        for (let i = 0; i < cards.length; i++) {
-          const potentialRestaurants =
-            cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-
-          if (potentialRestaurants) {
-            restaurantsArray = potentialRestaurants;
-            console.log(restaurantsArray);
-            
-            // console.log(`Found restaurants grid at cards index [${i}]!`);
-            break;
-          }
-        }
-      }
-
-      // console.log("Extracted Restaurants Array:", restaurantsArray);
-
-      if (restaurantsArray) {
-        SetListOfRestaurant(restaurantsArray);
-        setfilteredRestaurant(restaurantsArray);
-      } else {
-        console.warn(
-          "Could not find the restaurant array path anywhere in the cards layout.",
-        );
-      }
-    } catch (error) {
-      console.error("API reading error details:", error);
-    }
+    // try {
+    const response = await fetch(
+      "https://namastedev.com/api/v1/listRestaurants",
+    );
+    const json = await response.json();
+    const restaurants =
+      json?.data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants ?? [];
+    SetListOfRestaurant(restaurants);
+    setfilteredRestaurant(restaurants);
   };
-
-  //Normal JS variable
-  //   let listOfRestaurantsJS = [
-  //     {
-  //       type: "restaurant",
-  //       data: {
-  //         id: "334475",
-  //         name: "KFC",
-  //         cloudinaryImageId: "bdcd233971bfe5b4d354dcf68bb974db",
-  //         cuisines: ["Burgers", "Biryani", "American", "Snacks", "Fast Food"],
-  //         avgRating: 3.8,
-  //         costForTwo: "₹400 for two",
-  //         deliveryTime: 36,
-  //       },
-  //     },
-  //     {
-  //       type: "restaurant",
-  //       data: {
-  //         id: "33448875",
-  //         name: "MCD",
-  //         cloudinaryImageId: "bdcd233971bfe5b4d354dcf68bb974db",
-  //         cuisines: ["Burgers", "Biryani", "American", "Snacks", "Fast Food"],
-  //         avgRating: 4.8,
-  //         costForTwo: "₹400 for two",
-  //         deliveryTime: 36,
-  //       },
-  //     },
-  //     {
-  //       type: "restaurant",
-  //       data: {
-  //         id: "3344757",
-  //         name: "DOMINOS",
-  //         cloudinaryImageId: "bdcd233971bfe5b4d354dcf68bb974db",
-  //         cuisines: ["Burgers", "Biryani", "American", "Snacks", "Fast Food"],
-  //         avgRating: 4.5,
-  //         costForTwo: "₹400 for two",
-  //         deliveryTime: 36,
-  //       },
-  //     },
-
-  //   ];
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -116,10 +44,10 @@ const Body = () => {
           <button
             onClick={() => {
               console.log(searchText);
-                 const filtered = listOfRestaurants.filter((res) =>
-      res.info.name.toLowerCase().includes(searchText.toLowerCase())
-    );
-             setfilteredRestaurant(filtered);
+              const filtered = listOfRestaurants.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase()),
+              );
+              setfilteredRestaurant(filtered);
             }}
           >
             {" "}

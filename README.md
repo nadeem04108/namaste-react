@@ -46,3 +46,8 @@ Footer
 --useState()-- Superpowerfull state variable in react 
 --useEffect()
 --
+
+
+# 2 types routing in web pages
+- client side routing
+- server side routing
